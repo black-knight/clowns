@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65B7B6C318AB4EFD00FFDC58"
                BuildableName = "Clowns.app"
-               BlueprintName = "Clowns"
+               BlueprintName = "Clowns! Presidents"
                ReferencedContainer = "container:Clowns.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65B7B6C318AB4EFD00FFDC58"
             BuildableName = "Clowns.app"
-            BlueprintName = "Clowns"
+            BlueprintName = "Clowns! Presidents"
             ReferencedContainer = "container:Clowns.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65B7B6C318AB4EFD00FFDC58"
             BuildableName = "Clowns.app"
-            BlueprintName = "Clowns"
+            BlueprintName = "Clowns! Presidents"
             ReferencedContainer = "container:Clowns.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65B7B6C318AB4EFD00FFDC58"
             BuildableName = "Clowns.app"
-            BlueprintName = "Clowns"
+            BlueprintName = "Clowns! Presidents"
             ReferencedContainer = "container:Clowns.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

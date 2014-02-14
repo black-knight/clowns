@@ -16,15 +16,18 @@
 		65B7B6DA18AB4EFD00FFDC58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B6D918AB4EFD00FFDC58 /* AppDelegate.m */; };
 		65B7B6DD18AB4EFD00FFDC58 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B7B6DB18AB4EFD00FFDC58 /* Main_iPhone.storyboard */; };
 		65B7B6E018AB4EFD00FFDC58 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B7B6DE18AB4EFD00FFDC58 /* Main_iPad.storyboard */; };
-		65B7B6E318AB4EFD00FFDC58 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B6E218AB4EFD00FFDC58 /* ViewController.m */; };
-		65B7B6E618AB4EFD00FFDC58 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B6E518AB4EFD00FFDC58 /* MyScene.m */; };
-		65B7B6E818AB4EFD00FFDC58 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B7B6E718AB4EFD00FFDC58 /* Spaceship.png */; };
+		65B7B6E318AB4EFD00FFDC58 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B6E218AB4EFD00FFDC58 /* IntroViewController.m */; };
+		65B7B6E618AB4EFD00FFDC58 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B6E518AB4EFD00FFDC58 /* GameScene.m */; };
 		65B7B6EA18AB4EFD00FFDC58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65B7B6E918AB4EFD00FFDC58 /* Images.xcassets */; };
 		65B7B6F118AB4EFD00FFDC58 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6F018AB4EFD00FFDC58 /* XCTest.framework */; };
 		65B7B6F218AB4EFD00FFDC58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6C718AB4EFD00FFDC58 /* Foundation.framework */; };
 		65B7B6F318AB4EFD00FFDC58 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6CB18AB4EFD00FFDC58 /* UIKit.framework */; };
 		65B7B6FB18AB4EFD00FFDC58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65B7B6F918AB4EFD00FFDC58 /* InfoPlist.strings */; };
 		65B7B6FD18AB4EFD00FFDC58 /* ClownsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B6FC18AB4EFD00FFDC58 /* ClownsTests.m */; };
+		65B7B70B18ABB46B00FFDC58 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 65B7B70A18ABB46B00FFDC58 /* Images */; };
+		65B7B70E18AE29B000FFDC58 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B70D18AE29B000FFDC58 /* IntroScene.m */; };
+		65B7B71118AE29DE00FFDC58 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B71018AE29DE00FFDC58 /* Util.m */; };
+		65B7B71518AE464700FFDC58 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B71418AE464700FFDC58 /* GameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,17 +54,23 @@
 		65B7B6D918AB4EFD00FFDC58 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		65B7B6DC18AB4EFD00FFDC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		65B7B6DF18AB4EFD00FFDC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		65B7B6E118AB4EFD00FFDC58 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		65B7B6E218AB4EFD00FFDC58 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		65B7B6E418AB4EFD00FFDC58 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
-		65B7B6E518AB4EFD00FFDC58 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		65B7B6E718AB4EFD00FFDC58 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		65B7B6E118AB4EFD00FFDC58 /* IntroViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		65B7B6E218AB4EFD00FFDC58 /* IntroViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		65B7B6E418AB4EFD00FFDC58 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		65B7B6E518AB4EFD00FFDC58 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		65B7B6E918AB4EFD00FFDC58 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65B7B6EF18AB4EFD00FFDC58 /* ClownsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClownsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B7B6F018AB4EFD00FFDC58 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		65B7B6F818AB4EFD00FFDC58 /* ClownsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClownsTests-Info.plist"; sourceTree = "<group>"; };
 		65B7B6FA18AB4EFD00FFDC58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65B7B6FC18AB4EFD00FFDC58 /* ClownsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClownsTests.m; sourceTree = "<group>"; };
+		65B7B70A18ABB46B00FFDC58 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		65B7B70C18AE29B000FFDC58 /* IntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroScene.h; sourceTree = "<group>"; };
+		65B7B70D18AE29B000FFDC58 /* IntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScene.m; sourceTree = "<group>"; };
+		65B7B70F18AE29DE00FFDC58 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		65B7B71018AE29DE00FFDC58 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		65B7B71318AE464700FFDC58 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		65B7B71418AE464700FFDC58 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,16 +132,14 @@
 		65B7B6CF18AB4EFD00FFDC58 /* Clowns */ = {
 			isa = PBXGroup;
 			children = (
+				65B7B70618AB502A00FFDC58 /* Scenes */,
+				65B7B70718AB503200FFDC58 /* View Controllers */,
+				65B7B70918AB505800FFDC58 /* Storyboards */,
+				65B7B6E918AB4EFD00FFDC58 /* Images.xcassets */,
 				65B7B6D818AB4EFD00FFDC58 /* AppDelegate.h */,
 				65B7B6D918AB4EFD00FFDC58 /* AppDelegate.m */,
-				65B7B6DB18AB4EFD00FFDC58 /* Main_iPhone.storyboard */,
-				65B7B6DE18AB4EFD00FFDC58 /* Main_iPad.storyboard */,
-				65B7B6E118AB4EFD00FFDC58 /* ViewController.h */,
-				65B7B6E218AB4EFD00FFDC58 /* ViewController.m */,
-				65B7B6E418AB4EFD00FFDC58 /* MyScene.h */,
-				65B7B6E518AB4EFD00FFDC58 /* MyScene.m */,
-				65B7B6E718AB4EFD00FFDC58 /* Spaceship.png */,
-				65B7B6E918AB4EFD00FFDC58 /* Images.xcassets */,
+				65B7B71218AE29E300FFDC58 /* Util */,
+				65B7B70A18ABB46B00FFDC58 /* Images */,
 				65B7B6D018AB4EFD00FFDC58 /* Supporting Files */,
 			);
 			path = Clowns;
@@ -167,12 +174,52 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		65B7B70618AB502A00FFDC58 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				65B7B6E418AB4EFD00FFDC58 /* GameScene.h */,
+				65B7B6E518AB4EFD00FFDC58 /* GameScene.m */,
+				65B7B70C18AE29B000FFDC58 /* IntroScene.h */,
+				65B7B70D18AE29B000FFDC58 /* IntroScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		65B7B70718AB503200FFDC58 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				65B7B6E118AB4EFD00FFDC58 /* IntroViewController.h */,
+				65B7B6E218AB4EFD00FFDC58 /* IntroViewController.m */,
+				65B7B71318AE464700FFDC58 /* GameViewController.h */,
+				65B7B71418AE464700FFDC58 /* GameViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		65B7B70918AB505800FFDC58 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				65B7B6DB18AB4EFD00FFDC58 /* Main_iPhone.storyboard */,
+				65B7B6DE18AB4EFD00FFDC58 /* Main_iPad.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		65B7B71218AE29E300FFDC58 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				65B7B70F18AE29DE00FFDC58 /* Util.h */,
+				65B7B71018AE29DE00FFDC58 /* Util.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65B7B6C318AB4EFD00FFDC58 /* Clowns */ = {
+		65B7B6C318AB4EFD00FFDC58 /* Clowns! Presidents */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65B7B70018AB4EFD00FFDC58 /* Build configuration list for PBXNativeTarget "Clowns" */;
+			buildConfigurationList = 65B7B70018AB4EFD00FFDC58 /* Build configuration list for PBXNativeTarget "Clowns! Presidents" */;
 			buildPhases = (
 				65B7B6C018AB4EFD00FFDC58 /* Sources */,
 				65B7B6C118AB4EFD00FFDC58 /* Frameworks */,
@@ -182,7 +229,7 @@
 			);
 			dependencies = (
 			);
-			name = Clowns;
+			name = "Clowns! Presidents";
 			productName = Clowns;
 			productReference = 65B7B6C418AB4EFD00FFDC58 /* Clowns.app */;
 			productType = "com.apple.product-type.application";
@@ -232,7 +279,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65B7B6C318AB4EFD00FFDC58 /* Clowns */,
+				65B7B6C318AB4EFD00FFDC58 /* Clowns! Presidents */,
 				65B7B6EE18AB4EFD00FFDC58 /* ClownsTests */,
 			);
 		};
@@ -243,7 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B7B6E818AB4EFD00FFDC58 /* Spaceship.png in Resources */,
+				65B7B70B18ABB46B00FFDC58 /* Images in Resources */,
 				65B7B6EA18AB4EFD00FFDC58 /* Images.xcassets in Resources */,
 				65B7B6E018AB4EFD00FFDC58 /* Main_iPad.storyboard in Resources */,
 				65B7B6DD18AB4EFD00FFDC58 /* Main_iPhone.storyboard in Resources */,
@@ -266,10 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B7B6E618AB4EFD00FFDC58 /* MyScene.m in Sources */,
-				65B7B6E318AB4EFD00FFDC58 /* ViewController.m in Sources */,
+				65B7B6E618AB4EFD00FFDC58 /* GameScene.m in Sources */,
+				65B7B6E318AB4EFD00FFDC58 /* IntroViewController.m in Sources */,
+				65B7B71518AE464700FFDC58 /* GameViewController.m in Sources */,
 				65B7B6DA18AB4EFD00FFDC58 /* AppDelegate.m in Sources */,
 				65B7B6D618AB4EFD00FFDC58 /* main.m in Sources */,
+				65B7B70E18AE29B000FFDC58 /* IntroScene.m in Sources */,
+				65B7B71118AE29DE00FFDC58 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +336,7 @@
 /* Begin PBXTargetDependency section */
 		65B7B6F518AB4EFD00FFDC58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 65B7B6C318AB4EFD00FFDC58 /* Clowns */;
+			target = 65B7B6C318AB4EFD00FFDC58 /* Clowns! Presidents */;
 			targetProxy = 65B7B6F418AB4EFD00FFDC58 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -409,6 +459,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clowns/Clowns-Prefix.pch";
 				INFOPLIST_FILE = "Clowns/Clowns-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -423,6 +474,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clowns/Clowns-Prefix.pch";
 				INFOPLIST_FILE = "Clowns/Clowns-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -483,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65B7B70018AB4EFD00FFDC58 /* Build configuration list for PBXNativeTarget "Clowns" */ = {
+		65B7B70018AB4EFD00FFDC58 /* Build configuration list for PBXNativeTarget "Clowns! Presidents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65B7B70118AB4EFD00FFDC58 /* Debug */,
