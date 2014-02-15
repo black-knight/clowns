@@ -7,17 +7,23 @@
 //
 
 #import "GameScene.h"
+#import "TiltObject.h"
+#import "ClownCharacter.h"
 #import "Util.h"
 
 @interface GameScene ()
 
-@property (nonatomic) bool movingTilt;
-@property (nonatomic) CGPoint touchOffset;
+@property (nonatomic, retain) NSMutableArray *sceneShapes;
 
-@property (nonatomic, retain) SKSpriteNode *tiltSprite;
+@property (nonatomic) float lineWidth;
 
 @property (nonatomic) float borderLeft;
 @property (nonatomic) float borderRight;
+@property (nonatomic) float borderTop;
+@property (nonatomic) float borderBottom;
+
+@property (nonatomic, retain) TiltObject *tilt;
+@property (nonatomic, retain) NSMutableArray *clownCharacters;
 
 @end
 
@@ -32,7 +38,9 @@
 }
 
 - (void)initConstants {
-    self.movingTilt = NO;
+    self.lineWidth = 1.5f;
+    self.borderTop = 100.0f;
+    self.borderBottom = 5.0f;
 }
 
 - (void)setupScene {
@@ -40,59 +48,123 @@
 
     [self setupTilt];
 
-    self.borderLeft = self.tiltSprite.size.width / 2.0f;
+    self.borderLeft = self.tilt.sprite.size.width / 2.0f;
     self.borderRight = self.frame.size.width - self.borderLeft;
+    
+    [self setupSceneShapes];
+    [self setupClowns];
 }
 
 - (void)setupTilt {
-    self.tiltSprite = [Util spriteFromFile:@"Images/tilt.png"];
-    self.tiltSprite.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height * 0.1f);
-    [self addChild:self.tiltSprite];
+    self.tilt = [[TiltObject alloc] init];
+    self.tilt.state = NORMAL;
+    self.tilt.sprite.position = CGPointMake(CGRectGetMidX(self.frame), self.borderBottom + (self.tilt.sprite.size.height / 2.0f));
+    [self addChild:self.tilt.sprite];
+}
+
+- (void)setupClowns {
+    self.clownCharacters = [NSMutableArray array];
+    [self.clownCharacters addObject:[self spawnClown]];
+    [self.clownCharacters addObject:[self spawnClown]];
+}
+
+- (void)setupSceneShapes {
+    self.sceneShapes = [NSMutableArray array];
+    
+    // Bottom
+    UIBezierPath *bottomPath = [UIBezierPath bezierPath];
+    [bottomPath moveToPoint:CGPointMake(0.0f, self.borderBottom)];
+    [bottomPath addLineToPoint:CGPointMake(self.frame.size.width, self.borderBottom)];
+    
+    SKShapeNode *bottomShape = [[SKShapeNode alloc] init];
+    bottomShape.lineWidth = self.lineWidth;
+    bottomShape.antialiased = NO;
+    [bottomShape setPath:bottomPath.CGPath];
+    
+    [self addChild:bottomShape];
+}
+
+- (ClownCharacter *)spawnClown {
+    ClownCharacter *clown = [[ClownCharacter alloc] init];
+    if (self.clownCharacters.count == 0) {
+        clown.state = ON_TILT;
+        clown.tiltOffset = -1.0f;
+    } else {
+        clown.state = IN_AIR;
+        clown.sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    }
+    [self addChild:clown.sprite];
+    return clown;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (self.movingTilt) {
+    if (self.tilt.state == BEING_DRAGGED) {
         return;
     }
     for (UITouch *touch in touches) {
         CGPoint p = [touch locationInNode:self];
-        self.movingTilt = [self touchesTiltWithPoint:p];
-        self.touchOffset = CGPointMake(p.x - self.tiltSprite.position.x, p.y - self.tiltSprite.position.y);
-        return;
+        if ([self.tilt touchesTiltWithPoint:p]) {
+            self.tilt.state = BEING_DRAGGED;
+            self.tilt.touchOffset = CGPointMake(p.x - self.tilt.sprite.position.x, p.y - self.tilt.sprite.position.y);
+            return;
+        }
     }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (!self.movingTilt) {
+    if (self.tilt.state != BEING_DRAGGED) {
         return;
     }
     for (UITouch *touch in touches) {
         CGPoint p = [touch locationInNode:self];
-        [self setTiltPosition:CGPointMake(p.x - self.touchOffset.x, self.tiltSprite.position.y)];
+        [self setTiltPosition:CGPointMake(p.x - self.tilt.touchOffset.x, self.tilt.sprite.position.y)];
         return;
     }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    self.movingTilt = NO;
+    self.tilt.state = NORMAL;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    self.movingTilt = NO;
-}
-
-- (void)update:(CFTimeInterval)currentTime {
+    self.tilt.state = NORMAL;
 }
 
 - (void)setTiltPosition:(CGPoint)p {
     p.x = MAX(p.x, self.borderLeft);
     p.x = MIN(p.x, self.borderRight);
-    self.tiltSprite.position = CGPointMake(p.x, p.y);
+    self.tilt.sprite.position = CGPointMake(p.x, p.y);
 }
 
-- (bool)touchesTiltWithPoint:(CGPoint)p {
-    CGPoint delta = CGPointMake(ABS(self.tiltSprite.position.x - p.x), ABS(self.tiltSprite.position.y - p.y));
-    return delta.x <= self.tiltSprite.size.width / 2.0f && delta.y <= self.tiltSprite.size.height / 2.0f;
+- (void)update:(CFTimeInterval)currentTime {
+    [self updateClowns:currentTime];
+}
+
+- (void)updateClowns:(CFTimeInterval)currentTime {
+    for (ClownCharacter *clown in self.clownCharacters) {
+        if (clown.state == ON_TILT) {
+            [clown positionClownOnTilt:self.tilt];
+        }
+        if (clown.state == IN_AIR) {
+            [self updateClownInAir:clown];
+        }
+    }
+}
+
+- (void)updateClownInAir:(ClownCharacter *)clown {
+    [clown updateAirPosition];
+    
+    if (clown.sprite.position.y <= self.borderBottom) {
+        clown.sprite.position = CGPointMake(clown.sprite.position.x, self.borderBottom);
+    }
+
+    float tiltOffset = [self.tilt tiltOffsetAtX:clown.sprite.position.x];
+    float tiltY = [self.tilt tiltYPositionAtOffset:tiltOffset];
+
+    if (clown.sprite.position.y <= tiltY && ABS(tiltOffset <= 1.0f)) {
+        clown.state = ON_TILT;
+        clown.tiltOffset = tiltOffset;
+    }
 }
 
 @end

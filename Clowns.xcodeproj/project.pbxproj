@@ -28,6 +28,8 @@
 		65B7B70E18AE29B000FFDC58 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B70D18AE29B000FFDC58 /* IntroScene.m */; };
 		65B7B71118AE29DE00FFDC58 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B71018AE29DE00FFDC58 /* Util.m */; };
 		65B7B71518AE464700FFDC58 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B71418AE464700FFDC58 /* GameViewController.m */; };
+		65B7B71818AF7A7B00FFDC58 /* ClownCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B71718AF7A7B00FFDC58 /* ClownCharacter.m */; };
+		65B7B71C18AF81F400FFDC58 /* TiltObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7B71B18AF81F400FFDC58 /* TiltObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,10 @@
 		65B7B71018AE29DE00FFDC58 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		65B7B71318AE464700FFDC58 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		65B7B71418AE464700FFDC58 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		65B7B71618AF7A7B00FFDC58 /* ClownCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClownCharacter.h; sourceTree = "<group>"; };
+		65B7B71718AF7A7B00FFDC58 /* ClownCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClownCharacter.m; sourceTree = "<group>"; };
+		65B7B71A18AF81F400FFDC58 /* TiltObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiltObject.h; sourceTree = "<group>"; };
+		65B7B71B18AF81F400FFDC58 /* TiltObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiltObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				65B7B70618AB502A00FFDC58 /* Scenes */,
+				65B7B71918AF7A8200FFDC58 /* Objects */,
 				65B7B70718AB503200FFDC58 /* View Controllers */,
 				65B7B70918AB505800FFDC58 /* Storyboards */,
 				65B7B6E918AB4EFD00FFDC58 /* Images.xcassets */,
@@ -212,6 +219,17 @@
 				65B7B71018AE29DE00FFDC58 /* Util.m */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		65B7B71918AF7A8200FFDC58 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				65B7B71618AF7A7B00FFDC58 /* ClownCharacter.h */,
+				65B7B71718AF7A7B00FFDC58 /* ClownCharacter.m */,
+				65B7B71A18AF81F400FFDC58 /* TiltObject.h */,
+				65B7B71B18AF81F400FFDC58 /* TiltObject.m */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,8 +332,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				65B7B6E618AB4EFD00FFDC58 /* GameScene.m in Sources */,
+				65B7B71C18AF81F400FFDC58 /* TiltObject.m in Sources */,
 				65B7B6E318AB4EFD00FFDC58 /* IntroViewController.m in Sources */,
 				65B7B71518AE464700FFDC58 /* GameViewController.m in Sources */,
+				65B7B71818AF7A7B00FFDC58 /* ClownCharacter.m in Sources */,
 				65B7B6DA18AB4EFD00FFDC58 /* AppDelegate.m in Sources */,
 				65B7B6D618AB4EFD00FFDC58 /* main.m in Sources */,
 				65B7B70E18AE29B000FFDC58 /* IntroScene.m in Sources */,
