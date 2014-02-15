@@ -24,7 +24,6 @@ enum TiltState {
 - (float)tiltOffsetAtX:(float)x;
 
 - (void)putClownOnTilt:(ClownCharacter *)clown;
-- (void)bounceClownsOnTilt;
 
 @property (nonatomic, retain) SKSpriteNode *sprite;
 

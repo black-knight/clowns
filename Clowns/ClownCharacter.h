@@ -20,7 +20,7 @@ enum ClownState {
 
 - (void)positionClownOnTilt:(TiltObject *)tilt;
 - (void)updateAirPosition;
-- (void)bounceIntoAirFromYPosition:(float)y;
+- (void)bounceIntoAirFromYPosition:(float)y withForce:(float)force;
 
 @property (nonatomic, retain) SKSpriteNode *sprite;
 

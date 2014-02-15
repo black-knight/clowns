@@ -22,7 +22,7 @@
 - (void)initialize {
     self.state = NORMAL;
     self.sprite = [Util spriteFromFile:@"Images/tilt.png"];
-    self.sprite.zRotation = M_PI / 8.0f;
+    self.sprite.zRotation = atan2(self.sprite.size.width / 2.0f, self.sprite.size.height) + M_PI_2 - M_PI;
     self.clownsOnTilt = [NSMutableArray array];
 }
 
@@ -40,20 +40,20 @@
 }
 
 - (void)putClownOnTilt:(ClownCharacter *)clown {
-    [self bounceClownsOnTilt];
-
     clown.state = ON_TILT;
     clown.tiltOffset = [self tiltOffsetAtX:clown.sprite.position.x];
-    
+
+    [self bounceClownsOnTiltWithForce:(0.75f + ABS(clown.tiltOffset) * 0.25f)];
     [self.clownsOnTilt addObject:clown];
     
     self.sprite.zRotation = ABS(self.sprite.zRotation) * (clown.tiltOffset < 0.0f ? 1.0f : -1.0f);
 }
 
-- (void)bounceClownsOnTilt {
+- (void)bounceClownsOnTiltWithForce:(float)force {
     for (ClownCharacter *clown in self.clownsOnTilt) {
-        [clown bounceIntoAirFromYPosition:[self tiltYPositionAtOffset:-clown.tiltOffset]];
+        [clown bounceIntoAirFromYPosition:[self tiltYPositionAtOffset:-clown.tiltOffset] withForce:force];
     }
+    [self.clownsOnTilt removeAllObjects];
 }
 
 @end
