@@ -7,12 +7,14 @@
 //
 
 #import "ClownCharacter.h"
+#import "TiltObject.h"
 #import "Util.h"
 
 @interface ClownCharacter ()
 
 @property (nonatomic) float gravity;
 @property (nonatomic) float maxVelocity;
+@property (nonatomic) float bounceVelocity;
 
 @end
 
@@ -28,6 +30,7 @@
 - (void)initialize {
     self.gravity = 0.1f;
     self.maxVelocity = 10.0f;
+    self.bounceVelocity = -5.0f;
     
     self.state = NORMAL;
     self.sprite = [Util spriteFromFile:@"Images/clown_jumping.png"];
@@ -47,6 +50,12 @@
                                 MIN(self.velocity.y + self.gravity, self.maxVelocity));
     self.sprite.position = CGPointMake(self.sprite.position.x + self.velocity.x,
                                        self.sprite.position.y - self.velocity.y);
+}
+
+- (void)bounceIntoAirFromYPosition:(float)y {
+    self.state = IN_AIR;
+    self.velocity = CGPointMake(0.0f, self.bounceVelocity);
+    self.sprite.position = CGPointMake(self.sprite.position.x, y);
 }
 
 @end

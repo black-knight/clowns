@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 
+@class ClownCharacter;
+
 enum TiltState {
     NORMAL,
     BEING_DRAGGED
@@ -21,10 +23,14 @@ enum TiltState {
 - (float)tiltYPositionAtOffset:(float)offset;
 - (float)tiltOffsetAtX:(float)x;
 
+- (void)putClownOnTilt:(ClownCharacter *)clown;
+- (void)bounceClownsOnTilt;
+
 @property (nonatomic, retain) SKSpriteNode *sprite;
 
 @property (nonatomic) enum TiltState state;
 
+@property (nonatomic, retain) NSMutableArray *clownsOnTilt;
 @property (nonatomic) CGPoint touchOffset;
 
 @end

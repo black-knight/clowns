@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 
-#import "TiltObject.h"
+@class TiltObject;
 
 enum ClownState {
     ON_TILT,
@@ -20,6 +20,7 @@ enum ClownState {
 
 - (void)positionClownOnTilt:(TiltObject *)tilt;
 - (void)updateAirPosition;
+- (void)bounceIntoAirFromYPosition:(float)y;
 
 @property (nonatomic, retain) SKSpriteNode *sprite;
 

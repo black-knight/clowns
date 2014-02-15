@@ -66,6 +66,8 @@
     self.clownCharacters = [NSMutableArray array];
     [self.clownCharacters addObject:[self spawnClown]];
     [self.clownCharacters addObject:[self spawnClown]];
+
+    [self.tilt putClownOnTilt:[self.clownCharacters lastObject]];
 }
 
 - (void)setupSceneShapes {
@@ -86,13 +88,8 @@
 
 - (ClownCharacter *)spawnClown {
     ClownCharacter *clown = [[ClownCharacter alloc] init];
-    if (self.clownCharacters.count == 0) {
-        clown.state = ON_TILT;
-        clown.tiltOffset = -1.0f;
-    } else {
-        clown.state = IN_AIR;
-        clown.sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    }
+    clown.state = IN_AIR;
+    clown.sprite.position = CGPointMake(CGRectGetMidX(self.frame) + 20.0f - self.clownCharacters.count * 70.0f, CGRectGetMidY(self.frame));
     [self addChild:clown.sprite];
     return clown;
 }
@@ -161,9 +158,8 @@
     float tiltOffset = [self.tilt tiltOffsetAtX:clown.sprite.position.x];
     float tiltY = [self.tilt tiltYPositionAtOffset:tiltOffset];
 
-    if (clown.sprite.position.y <= tiltY && ABS(tiltOffset <= 1.0f)) {
-        clown.state = ON_TILT;
-        clown.tiltOffset = tiltOffset;
+    if (clown.sprite.position.y <= tiltY && ABS(tiltOffset) <= 1.0f) {
+        [self.tilt putClownOnTilt:clown];
     }
 }
 
