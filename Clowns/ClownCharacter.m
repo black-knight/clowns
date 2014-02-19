@@ -67,4 +67,9 @@
     return self.bounceVelocity * force * (0.5f + (ABS(self.tiltOffset) * 0.5f));
 }
 
+- (void)startWalkingAway {
+    self.state = WALKING_AWAY;
+    self.velocity = CGPointMake(0.0f, 0.0f);
+}
+
 @end

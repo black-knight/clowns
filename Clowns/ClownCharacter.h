@@ -13,7 +13,8 @@
 
 enum ClownState {
     ON_TILT,
-    IN_AIR
+    IN_AIR,
+    WALKING_AWAY
 };
 
 @interface ClownCharacter : NSObject
@@ -21,6 +22,7 @@ enum ClownState {
 - (void)positionClownOnTilt:(TiltObject *)tilt;
 - (void)updateAirPosition;
 - (void)bounceIntoAirFromYPosition:(float)y withForce:(float)force;
+- (void)startWalkingAway;
 
 @property (nonatomic, retain) SKSpriteNode *sprite;
 

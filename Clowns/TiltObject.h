@@ -30,6 +30,7 @@ enum TiltState {
 @property (nonatomic) enum TiltState state;
 
 @property (nonatomic, retain) NSMutableArray *clownsOnTilt;
+
 @property (nonatomic) CGPoint touchOffset;
 
 @end

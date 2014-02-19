@@ -43,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		65B7B6C418AB4EFD00FFDC58 /* Clowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clowns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65B7B6C418AB4EFD00FFDC58 /* Clowns! Presidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clowns! Presidents.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B7B6C718AB4EFD00FFDC58 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65B7B6C918AB4EFD00FFDC58 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		65B7B6CB18AB4EFD00FFDC58 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -117,7 +117,7 @@
 		65B7B6C518AB4EFD00FFDC58 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65B7B6C418AB4EFD00FFDC58 /* Clowns.app */,
+				65B7B6C418AB4EFD00FFDC58 /* Clowns! Presidents.app */,
 				65B7B6EF18AB4EFD00FFDC58 /* ClownsTests.xctest */,
 			);
 			name = Products;
@@ -249,7 +249,7 @@
 			);
 			name = "Clowns! Presidents";
 			productName = Clowns;
-			productReference = 65B7B6C418AB4EFD00FFDC58 /* Clowns.app */;
+			productReference = 65B7B6C418AB4EFD00FFDC58 /* Clowns! Presidents.app */;
 			productType = "com.apple.product-type.application";
 		};
 		65B7B6EE18AB4EFD00FFDC58 /* ClownsTests */ = {
@@ -562,6 +562,7 @@
 				65B7B70218AB4EFD00FFDC58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65B7B70318AB4EFD00FFDC58 /* Build configuration list for PBXNativeTarget "ClownsTests" */ = {
 			isa = XCConfigurationList;
@@ -570,6 +571,7 @@
 				65B7B70518AB4EFD00FFDC58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

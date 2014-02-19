@@ -40,7 +40,7 @@
 - (void)initConstants {
     self.lineWidth = 1.5f;
     self.borderTop = 100.0f;
-    self.borderBottom = 5.0f;
+    self.borderBottom = 25.0f;
 }
 
 - (void)setupScene {
@@ -48,8 +48,8 @@
 
     [self setupTilt];
 
-    self.borderLeft = self.tilt.sprite.size.width / 2.0f;
-    self.borderRight = self.frame.size.width - self.borderLeft;
+    self.borderLeft = (self.frame.size.width * 0.15f) + (self.tilt.sprite.size.width / 2.0f);
+    self.borderRight = self.frame.size.width - (self.tilt.sprite.size.width / 2.0f);
     
     [self setupSceneShapes];
     [self setupClowns];
@@ -159,7 +159,14 @@
     float tiltY = [self.tilt tiltYPositionAtOffset:tiltOffset];
 
     if (clown.sprite.position.y <= tiltY && ABS(tiltOffset) <= 1.0f) {
-        [self.tilt putClownOnTilt:clown];
+        int signClown = tiltOffset > 0.0f ? 1.0f : -1.0f;
+        int signTiltClown = ((ClownCharacter *)[self.tilt.clownsOnTilt lastObject]).tiltOffset > 0.0f ? 1.0f : -1.0f;
+        if (signClown != signTiltClown) {
+            [self.tilt putClownOnTilt:clown];
+        }
+    }
+    if (clown.sprite.position.y <= self.borderBottom) {
+        [clown startWalkingAway];
     }
 }
 
