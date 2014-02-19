@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65770D2718B531F100CB5251 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 65770D2618B531F100CB5251 /* Constants.m */; };
 		65B7B6C818AB4EFD00FFDC58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6C718AB4EFD00FFDC58 /* Foundation.framework */; };
 		65B7B6CA18AB4EFD00FFDC58 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6C918AB4EFD00FFDC58 /* CoreGraphics.framework */; };
 		65B7B6CC18AB4EFD00FFDC58 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6CB18AB4EFD00FFDC58 /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65770D2518B531F100CB5251 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		65770D2618B531F100CB5251 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		65B7B6C418AB4EFD00FFDC58 /* Clowns! Presidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clowns! Presidents.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B7B6C718AB4EFD00FFDC58 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65B7B6C918AB4EFD00FFDC58 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -217,6 +220,8 @@
 			children = (
 				65B7B70F18AE29DE00FFDC58 /* Util.h */,
 				65B7B71018AE29DE00FFDC58 /* Util.m */,
+				65770D2518B531F100CB5251 /* Constants.h */,
+				65770D2618B531F100CB5251 /* Constants.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				65B7B6E318AB4EFD00FFDC58 /* IntroViewController.m in Sources */,
 				65B7B71518AE464700FFDC58 /* GameViewController.m in Sources */,
 				65B7B71818AF7A7B00FFDC58 /* ClownCharacter.m in Sources */,
+				65770D2718B531F100CB5251 /* Constants.m in Sources */,
 				65B7B6DA18AB4EFD00FFDC58 /* AppDelegate.m in Sources */,
 				65B7B6D618AB4EFD00FFDC58 /* main.m in Sources */,
 				65B7B70E18AE29B000FFDC58 /* IntroScene.m in Sources */,

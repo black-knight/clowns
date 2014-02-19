@@ -10,17 +10,11 @@
 #import "TiltObject.h"
 #import "ClownCharacter.h"
 #import "Util.h"
+#import "Constants.h"
 
 @interface GameScene ()
 
 @property (nonatomic, retain) NSMutableArray *sceneShapes;
-
-@property (nonatomic) float lineWidth;
-
-@property (nonatomic) float borderLeft;
-@property (nonatomic) float borderRight;
-@property (nonatomic) float borderTop;
-@property (nonatomic) float borderBottom;
 
 @property (nonatomic, retain) TiltObject *tilt;
 @property (nonatomic, retain) NSMutableArray *clownCharacters;
@@ -38,9 +32,9 @@
 }
 
 - (void)initConstants {
-    self.lineWidth = 1.5f;
-    self.borderTop = 100.0f;
-    self.borderBottom = 25.0f;
+    [Constants sharedInstance].lineWidth = 1.5f;
+    [Constants sharedInstance].borderTop = 100.0f;
+    [Constants sharedInstance].borderBottom = 25.0f;
 }
 
 - (void)setupScene {
@@ -48,8 +42,8 @@
 
     [self setupTilt];
 
-    self.borderLeft = (self.frame.size.width * 0.15f) + (self.tilt.sprite.size.width / 2.0f);
-    self.borderRight = self.frame.size.width - (self.tilt.sprite.size.width / 2.0f);
+    [Constants sharedInstance].borderLeft = (self.frame.size.width * 0.15f) + (self.tilt.sprite.size.width / 2.0f);
+    [Constants sharedInstance].borderRight = self.frame.size.width - (self.tilt.sprite.size.width / 2.0f);
     
     [self setupSceneShapes];
     [self setupClowns];
@@ -58,7 +52,7 @@
 - (void)setupTilt {
     self.tilt = [[TiltObject alloc] init];
     self.tilt.state = NORMAL;
-    self.tilt.sprite.position = CGPointMake(CGRectGetMidX(self.frame), self.borderBottom + (self.tilt.sprite.size.height / 2.0f));
+    self.tilt.sprite.position = CGPointMake(CGRectGetMidX(self.frame), [Constants sharedInstance].borderBottom + (self.tilt.sprite.size.height / 2.0f));
     [self addChild:self.tilt.sprite];
 }
 
@@ -75,11 +69,11 @@
     
     // Bottom
     UIBezierPath *bottomPath = [UIBezierPath bezierPath];
-    [bottomPath moveToPoint:CGPointMake(0.0f, self.borderBottom)];
-    [bottomPath addLineToPoint:CGPointMake(self.frame.size.width, self.borderBottom)];
+    [bottomPath moveToPoint:CGPointMake(0.0f, [Constants sharedInstance].borderBottom)];
+    [bottomPath addLineToPoint:CGPointMake(self.frame.size.width, [Constants sharedInstance].borderBottom)];
     
     SKShapeNode *bottomShape = [[SKShapeNode alloc] init];
-    bottomShape.lineWidth = self.lineWidth;
+    bottomShape.lineWidth = [Constants sharedInstance].lineWidth;
     bottomShape.antialiased = NO;
     [bottomShape setPath:bottomPath.CGPath];
     
@@ -128,8 +122,8 @@
 }
 
 - (void)setTiltPosition:(CGPoint)p {
-    p.x = MAX(p.x, self.borderLeft);
-    p.x = MIN(p.x, self.borderRight);
+    p.x = MAX(p.x, [Constants sharedInstance].borderLeft);
+    p.x = MIN(p.x, [Constants sharedInstance].borderRight);
     self.tilt.sprite.position = CGPointMake(p.x, p.y);
 }
 
@@ -145,14 +139,17 @@
         if (clown.state == IN_AIR) {
             [self updateClownInAir:clown];
         }
+        if (clown.state == WALKING_AWAY) {
+            [clown updateWalkingAway];
+        }
     }
 }
 
 - (void)updateClownInAir:(ClownCharacter *)clown {
     [clown updateAirPosition];
     
-    if (clown.sprite.position.y <= self.borderBottom) {
-        clown.sprite.position = CGPointMake(clown.sprite.position.x, self.borderBottom);
+    if (clown.sprite.position.y <= [Constants sharedInstance].borderBottom) {
+        clown.sprite.position = CGPointMake(clown.sprite.position.x, [Constants sharedInstance].borderBottom);
     }
 
     float tiltOffset = [self.tilt tiltOffsetAtX:clown.sprite.position.x];
@@ -165,7 +162,7 @@
             [self.tilt putClownOnTilt:clown];
         }
     }
-    if (clown.sprite.position.y <= self.borderBottom) {
+    if (clown.sprite.position.y <= [Constants sharedInstance].borderBottom) {
         [clown startWalkingAway];
     }
 }

@@ -9,12 +9,14 @@
 #import "ClownCharacter.h"
 #import "TiltObject.h"
 #import "Util.h"
+#import "Constants.h"
 
 @interface ClownCharacter ()
 
 @property (nonatomic) float gravity;
 @property (nonatomic) float maxVelocity;
 @property (nonatomic) float bounceVelocity;
+@property (nonatomic) float walkAwaySpeed;
 
 @end
 
@@ -30,7 +32,8 @@
 - (void)initialize {
     self.gravity = 0.1f;
     self.maxVelocity = 10.0f;
-    self.bounceVelocity = -10.0f;
+    self.bounceVelocity = -9.0f;
+    self.walkAwaySpeed = 1.0f;
     
     self.state = NORMAL;
     self.sprite = [Util spriteFromFile:@"Images/clown_jumping.png"];
@@ -59,12 +62,24 @@
 }
 
 - (float)calculateBounceVelocityX {
-    float x = ((float)rand() / RAND_MAX) - 0.5f;
-    return x;
+    float forceMargin = 70.0f;
+    float v = ((float)rand() / RAND_MAX) * 2.0f - 1.0f;
+    float predictedLandingX = self.sprite.position.x + (v * forceMargin);
+    if (predictedLandingX < [Constants sharedInstance].borderLeft) {
+        v = ABS(v);
+    }
+    if (predictedLandingX > [Constants sharedInstance].borderRight) {
+        v = -ABS(v);
+    }
+    return v;
 }
 
 - (float)calculateBounceVelocityYWithGivenForce:(float)force {
     return self.bounceVelocity * force * (0.5f + (ABS(self.tiltOffset) * 0.5f));
+}
+
+- (void)updateWalkingAway {
+    self.sprite.position = CGPointMake(self.sprite.position.x + self.walkAwaySpeed, self.sprite.position.y);
 }
 
 - (void)startWalkingAway {

@@ -27,7 +27,7 @@
 }
 
 - (bool)touchesTiltWithPoint:(CGPoint)p {
-    return ABS(self.sprite.position.x - p.x) <= self.sprite.size.width / 2.0f && p.y < self.sprite.position.y + (self.sprite.size.height / 2.0f);
+    return ABS(self.sprite.position.x - p.x) <= self.sprite.size.width / 2.0f && p.y < self.sprite.position.y + self.sprite.size.height;
 }
 
 - (float)tiltOffsetAtX:(float)x {
