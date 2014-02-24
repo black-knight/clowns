@@ -12,14 +12,18 @@
 @interface Cannon ()
 
 @property (nonatomic) float moveSpeed;
+@property (nonatomic) float startPosition;
 @property (nonatomic) float stopPosition;
 @property (nonatomic) float targetAngle;
 @property (nonatomic) float targetAngleMin;
 @property (nonatomic) float targetAngleMax;
 @property (nonatomic) float adjustAngleSpeed;
-@property (nonatomic) float fireCountdown;
+@property (nonatomic) float countdown;
+@property (nonatomic) float countdownSpeed;
 @property (nonatomic) float fireCountdownMax;
-@property (nonatomic) float fireCountdownSpeed;
+@property (nonatomic) float leaveCountdownMax;
+@property (nonatomic) float awayCountdownMax;
+@property (nonatomic) float fireForce;
 
 @end
 
@@ -33,25 +37,31 @@
 }
 
 - (void)initializeWithYPosition:(float)y {
-    self.state = ENTERING;
+    self.state = AWAY_COUNTDOWN;
 
     self.headSprite = [Util spriteFromFile:@"Images/cannon_head.png"];
     self.headSprite.anchorPoint = CGPointMake(0.5f, 0.3816f);
-    self.headSprite.position = CGPointMake(-self.headSprite.size.width / 2.0f, y + (self.headSprite.size.height * self.headSprite.anchorPoint.y));
+
+    self.moveSpeed = 0.4f;
+    self.startPosition = -self.headSprite.size.width / 2.0f;
+    self.stopPosition = self.headSprite.size.width * 3.0f / 5.0f;
+
+    self.headSprite.position = CGPointMake(self.startPosition, y + (self.headSprite.size.height * self.headSprite.anchorPoint.y));
 
     self.wheelSprite = [Util spriteFromFile:@"Images/cannon_wheel.png"];
     self.wheelSprite.anchorPoint = self.headSprite.anchorPoint;
     self.wheelSprite.position = self.headSprite.position;
 
-    self.moveSpeed = 0.4f;
-    self.stopPosition = self.headSprite.size.width * 3.0f / 5.0f;
     self.targetAngle = 0.0f;
     self.targetAngleMin = M_PI_2 * 6.0 / 8.0f;
     self.targetAngleMax = M_PI_2 * 7.0 / 8.0f;
     self.adjustAngleSpeed = 0.01f;
-    self.fireCountdown = 0.0f;
+    self.countdown = 0.0f;
+    self.countdownSpeed = 0.05f;
     self.fireCountdownMax = 1.0f;
-    self.fireCountdownSpeed = 0.05f;
+    self.leaveCountdownMax = 1.0f;
+    self.awayCountdownMax = 10.0f;
+    self.fireForce = 5.0f;
 }
 
 - (void)update {
@@ -63,12 +73,19 @@
             [self updateAdjustingAngle];
             break;
         case FIRE_COUNTDOWN:
+            [self updateFireCountdown];
             break;
         case FIRING:
+            [self updateFiring];
+            break;
+        case LEAVE_COUNTDOWN:
+            [self updateLeaveCountdown];
             break;
         case LEAVING:
+            [self updateLeaving];
             break;
         case AWAY_COUNTDOWN:
+            [self updateAwayCountdown];
             break;
     }
 }
@@ -92,16 +109,53 @@
     self.headSprite.zRotation = MIN(self.headSprite.zRotation + self.adjustAngleSpeed, self.targetAngle);
 
     if (self.headSprite.zRotation >= self.targetAngle) {
-        self.fireCountdown = 0.0f;
+        self.countdown = 0.0f;
         self.state = FIRE_COUNTDOWN;
     }
 }
 
 - (void)updateFireCountdown {
-    self.fireCountdown = MIN(self.fireCountdown + self.fireCountdownSpeed, self.fireCountdownMax);
+    self.countdown = MIN(self.countdown + self.countdownSpeed, self.fireCountdownMax);
     
-    if (self.fireCountdown >= self.fireCountdownMax) {
+    if (self.countdown >= self.fireCountdownMax) {
         self.state = FIRING;
+    }
+}
+
+- (void)updateFiring {
+    CGPoint v;
+    v.x = cosf(self.headSprite.zRotation) * self.fireForce;
+    v.y = -sinf(self.headSprite.zRotation) * self.fireForce;
+    [self.delegate fireClownAtPosition:self.headSprite.position withVelocity:v];
+    
+    self.countdown = 0.0f;
+    self.state = LEAVE_COUNTDOWN;
+}
+
+- (void)updateLeaveCountdown {
+    self.countdown = MIN(self.countdown + self.countdownSpeed, self.leaveCountdownMax);
+    
+    if (self.countdown >= self.leaveCountdownMax) {
+        self.state = LEAVING;
+    }
+}
+
+- (void)updateLeaving {
+    self.headSprite.position = CGPointMake(MAX(self.headSprite.position.x - self.moveSpeed, self.startPosition), self.headSprite.position.y);
+    self.wheelSprite.position = self.headSprite.position;
+    self.wheelSprite.zRotation = -self.wheelSprite.position.x * 5.0f * M_PI / 180.0f;
+    
+    if (self.headSprite.position.x <= self.startPosition) {
+        self.countdown = 0.0f;
+        self.state = AWAY_COUNTDOWN;
+    }
+}
+
+- (void)updateAwayCountdown {
+    self.countdown = MIN(self.countdown + self.countdownSpeed, self.awayCountdownMax);
+    
+    if (self.countdown >= self.awayCountdownMax) {
+        self.state = ENTERING;
     }
 }
 

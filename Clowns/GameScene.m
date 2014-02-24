@@ -9,7 +9,6 @@
 #import "GameScene.h"
 #import "TiltObject.h"
 #import "ClownCharacter.h"
-#import "Cannon.h"
 #import "Util.h"
 #import "Constants.h"
 
@@ -61,14 +60,16 @@
 
 - (void)setupClowns {
     self.clownCharacters = [NSMutableArray array];
-    [self.clownCharacters addObject:[self spawnClown]];
-    [self.clownCharacters addObject:[self spawnClown]];
+    [self spawnClown];
+    [self spawnClown];
 
     [self.tilt putClownOnTilt:[self.clownCharacters lastObject]];
 }
 
 - (void)setupCannon {
     self.cannon = [[Cannon alloc] initWithYPosition:[Constants sharedInstance].borderBottom];
+    self.cannon.delegate = self;
+    
     [self addChild:self.cannon.headSprite];
     [self addChild:self.cannon.wheelSprite];
 }
@@ -93,7 +94,22 @@
     ClownCharacter *clown = [[ClownCharacter alloc] init];
     clown.state = IN_AIR;
     clown.sprite.position = CGPointMake(CGRectGetMidX(self.frame) + 20.0f - self.clownCharacters.count * 70.0f, CGRectGetMidY(self.frame));
+
+    [self.clownCharacters addObject:clown];
     [self addChild:clown.sprite];
+    
+    return clown;
+}
+
+- (ClownCharacter *)spawnClownAtPosition:(CGPoint)p withVelocity:(CGPoint)v {
+    ClownCharacter *clown = [[ClownCharacter alloc] init];
+    clown.state = IN_AIR;
+    clown.sprite.position = p;
+    clown.velocity = v;
+    
+    [self.clownCharacters addObject:clown];
+    [self addChild:clown.sprite];
+
     return clown;
 }
 
@@ -179,6 +195,10 @@
     if (clown.sprite.position.y <= [Constants sharedInstance].borderBottom) {
         [clown startWalkingAway];
     }
+}
+
+- (void)fireClownAtPosition:(CGPoint)p withVelocity:(CGPoint)v {
+    [self spawnClownAtPosition:p withVelocity:v];
 }
 
 @end

@@ -30,9 +30,9 @@
 }
 
 - (void)initialize {
-    self.gravity = 0.1f;
+    self.gravity = 0.05f;
     self.maxVelocity = 10.0f;
-    self.bounceVelocity = -9.0f;
+    self.bounceVelocity = -6.0f;
     self.walkAwaySpeed = 1.0f;
     
     self.state = NORMAL;

@@ -8,6 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface GameScene : SKScene
+#import "Cannon.h"
+
+@interface GameScene : SKScene <CannonProtocol>
 
 @end
