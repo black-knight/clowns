@@ -57,21 +57,30 @@
 
 - (void)bounceIntoAirFromYPosition:(float)y withForce:(float)force {
     self.state = IN_AIR;
-    self.velocity = CGPointMake([self calculateBounceVelocityX], [self calculateBounceVelocityYWithGivenForce:force]);
+    float velY = [self calculateBounceVelocityYWithGivenForce:force];
+    float velX = [self calculateBounceVelocityXWithGivenVelocity:velY];
+    self.velocity = CGPointMake(velX, velY);
     self.sprite.position = CGPointMake(self.sprite.position.x, y);
 }
 
-- (float)calculateBounceVelocityX {
-    float forceMargin = 70.0f;
-    float v = ((float)rand() / RAND_MAX) * 2.0f - 1.0f;
-    float predictedLandingX = self.sprite.position.x + (v * forceMargin);
+- (float)calculateBounceVelocityXWithGivenVelocity:(float)velY {
+    float velX = ((float)rand() / RAND_MAX) * 2.0f - 1.0f;
+    float predictedLandingX = [self predictedLandingXWithVelocityX:velX velocityY:velY];
     if (predictedLandingX < [Constants sharedInstance].borderLeft) {
-        v = ABS(v);
+        velX = ABS(velX);
     }
     if (predictedLandingX > [Constants sharedInstance].borderRight) {
-        v = -ABS(v);
+        velX = -ABS(velX);
     }
-    return v;
+    return velX;
+}
+
+- (float)predictedLandingXWithVelocityX:(float)velX velocityY:(float)velY {
+    // x = velX * t + 0.5*velY*(t^2)
+    // y = velY * t + 0.5*-gravity*(t^2)
+
+    float t = 125.0f;
+    return self.sprite.position.x + (velX * t);
 }
 
 - (float)calculateBounceVelocityYWithGivenForce:(float)force {
