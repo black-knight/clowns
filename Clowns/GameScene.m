@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "TiltObject.h"
 #import "ClownCharacter.h"
+#import "Cannon.h"
 #import "Util.h"
 #import "Constants.h"
 
@@ -18,6 +19,7 @@
 
 @property (nonatomic, retain) TiltObject *tilt;
 @property (nonatomic, retain) NSMutableArray *clownCharacters;
+@property (nonatomic, retain) Cannon *cannon;
 
 @end
 
@@ -47,6 +49,7 @@
     
     [self setupSceneShapes];
     [self setupClowns];
+    [self setupCannon];
 }
 
 - (void)setupTilt {
@@ -62,6 +65,12 @@
     [self.clownCharacters addObject:[self spawnClown]];
 
     [self.tilt putClownOnTilt:[self.clownCharacters lastObject]];
+}
+
+- (void)setupCannon {
+    self.cannon = [[Cannon alloc] initWithYPosition:[Constants sharedInstance].borderBottom];
+    [self addChild:self.cannon.headSprite];
+    [self addChild:self.cannon.wheelSprite];
 }
 
 - (void)setupSceneShapes {
@@ -128,7 +137,12 @@
 }
 
 - (void)update:(CFTimeInterval)currentTime {
+    [self updateCannon:currentTime];
     [self updateClowns:currentTime];
+}
+
+- (void)updateCannon:(CFTimeInterval)currentTime {
+    [self.cannon update];
 }
 
 - (void)updateClowns:(CFTimeInterval)currentTime {

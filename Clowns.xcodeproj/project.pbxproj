@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		653A622118BBD495000A81F0 /* Cannon.m in Sources */ = {isa = PBXBuildFile; fileRef = 653A622018BBD495000A81F0 /* Cannon.m */; };
 		65770D2718B531F100CB5251 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 65770D2618B531F100CB5251 /* Constants.m */; };
 		65B7B6C818AB4EFD00FFDC58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6C718AB4EFD00FFDC58 /* Foundation.framework */; };
 		65B7B6CA18AB4EFD00FFDC58 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B7B6C918AB4EFD00FFDC58 /* CoreGraphics.framework */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		653A621F18BBD495000A81F0 /* Cannon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cannon.h; sourceTree = "<group>"; };
+		653A622018BBD495000A81F0 /* Cannon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cannon.m; sourceTree = "<group>"; };
 		65770D2518B531F100CB5251 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		65770D2618B531F100CB5251 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		65B7B6C418AB4EFD00FFDC58 /* Clowns! Presidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clowns! Presidents.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +236,8 @@
 				65B7B71718AF7A7B00FFDC58 /* ClownCharacter.m */,
 				65B7B71A18AF81F400FFDC58 /* TiltObject.h */,
 				65B7B71B18AF81F400FFDC58 /* TiltObject.m */,
+				653A621F18BBD495000A81F0 /* Cannon.h */,
+				653A622018BBD495000A81F0 /* Cannon.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				65B7B71818AF7A7B00FFDC58 /* ClownCharacter.m in Sources */,
 				65770D2718B531F100CB5251 /* Constants.m in Sources */,
 				65B7B6DA18AB4EFD00FFDC58 /* AppDelegate.m in Sources */,
+				653A622118BBD495000A81F0 /* Cannon.m in Sources */,
 				65B7B6D618AB4EFD00FFDC58 /* main.m in Sources */,
 				65B7B70E18AE29B000FFDC58 /* IntroScene.m in Sources */,
 				65B7B71118AE29DE00FFDC58 /* Util.m in Sources */,
